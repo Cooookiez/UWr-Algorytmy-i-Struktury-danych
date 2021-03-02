@@ -6,10 +6,16 @@ using namespace std;
 
 int poruwnan;
 
-// int max_a(int t[], int n) {
-//     int x = a[--n];
-//     return 0;
-// }
+int max_a(int t[], int n) {
+    int x = t[--n];
+    while (n--) {
+        poruwnan++;
+        if (t[n] > x) {
+            x = t[n];
+        }
+    }
+    return x;
+}
 
 int max_b(int t[], int n) {
     if (n == 1) {
@@ -43,23 +49,25 @@ int max_c(int t[], int start, int end) {
 
 int main() {
     
-    int t[] = {1, 5, 7, 2, 7, 9, 12, 22, 12, 10};
+    int t[] = {1, 5, 7, 2, 7, 9, 12, 22, 12, 30};
 
     int max;
+
+    cout << "n = " << sizeof(t)/sizeof(int) << endl << endl;
 
     // a)
     // ilosc porownan: n-1
     // pamiec: (int) * (n+2)
-    // poruwnan = 0;
-    // max = max_b(t, sizeof(t)/sizeof(int)-1);
-    // cout << "max b: " << max << endl;
-    // cout << "poruwnan b: " << poruwnan << endl;
+    poruwnan = 0;
+    max = max_a(t, sizeof(t)/sizeof(int));
+    cout << "max a: " << max << endl;
+    cout << "poruwnan a: " << poruwnan << endl;
 
     // b)
-    // ilosc porownan: n-2
+    // ilosc porownan: n-1
     // pamiec: (int) * (4n + 8)
     poruwnan = 0;
-    max = max_b(t, sizeof(t)/sizeof(int)-1);
+    max = max_b(t, sizeof(t)/sizeof(int));
     cout << "max b: " << max << endl;
     cout << "poruwnan b: " << poruwnan << endl;
 
