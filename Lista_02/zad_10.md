@@ -1,0 +1,1 @@
+moja odp do zad10: W pliku tree-2020.cc nie wystepuje funkcja o naziwe "height" wiec czas jej wykonywania jest zerowy. Co prawda istnieje funkcja h, oraz H nie mniej nie ma pewnosci żeby o to chodziło w tym zadaniu
