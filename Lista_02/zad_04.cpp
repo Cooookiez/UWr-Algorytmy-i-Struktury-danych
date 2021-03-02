@@ -66,7 +66,7 @@ int main() {
     // c)
     // ilosc porownan: n-1
     // pamiec: (int) * (3n-1)
-    poruwnan = 0;
+    poruwnan = 0 ;
     max = max_c(t, 0, sizeof(t)/sizeof(int)-1);
     cout << "max c: " << max << endl;
     cout << "poruwnan c: " << poruwnan << endl;
