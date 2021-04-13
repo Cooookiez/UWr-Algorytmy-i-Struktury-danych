@@ -1,6 +1,5 @@
 
 import plotly.graph_objects as go
-import numpy as np
 
 n = 8
 max_lvl = n**2
