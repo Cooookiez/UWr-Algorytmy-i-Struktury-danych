@@ -54,7 +54,9 @@ def dfs(state, level=1):
 if __name__ == "__main__":
 
     board = [[0] * n for _ in range(n)]
-    board[0][0] = 1
+    # kon zaczyna na:
+    # board[0][0] = 1
+    board[3][3] = 1
 
     state = (board, [(0, 0)])
     dfs(state)

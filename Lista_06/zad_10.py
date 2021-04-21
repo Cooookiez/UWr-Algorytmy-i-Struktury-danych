@@ -17,7 +17,7 @@ def dfs(tab, col=0): # n*(2n) = 2n^2 = O(n^2)
     for i in range(n): # n
         nx = i
         ny = col
-        if tab[nx][ny] == 0: # *(2n)
+        if tab[nx][ny] == 0: # *(2n) # po koleji patrzy kade 
             t2 = copy.deepcopy(tab)
             t2[nx][ny] = 2
             # zaznaczam pola kture "t2[nx][ny]" atakuje jako 1

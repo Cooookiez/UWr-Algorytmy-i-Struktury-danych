@@ -3,18 +3,6 @@
 
 using namespace std;
 
-// a)
-
-// [30, 12, 21, 11]
-
-// 0 -> [30]
-// 1 -> [21, 11]
-// 2 -> [12]
-
-// ...
-// 9 -> []
-
-// [30, 21, 11, 12]
 void counting_sort(int t[], int n, int c) {
     vector<int> vec[10];
     int num;
