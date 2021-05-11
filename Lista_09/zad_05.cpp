@@ -1,5 +1,5 @@
 #include <iostream>
-#include "src/UnionFind3.h"
+#include "zad_04.h"
 
 using namespace std;
 
