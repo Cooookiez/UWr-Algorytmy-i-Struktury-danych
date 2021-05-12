@@ -24,7 +24,7 @@ int f(int n) {
     int int_size_bits = sizeof(n) * 8;
     bool tmpB;
     for (int i = 0; i < int_size_bits; i++) {
-        tmpB = ((13 & (1<<i)) != 0);
+        tmpB = ((n & (1<<i)) != 0);
         // cout << tmpB;
         ileB += (int)tmpB;
     }

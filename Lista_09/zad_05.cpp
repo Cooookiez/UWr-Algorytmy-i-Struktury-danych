@@ -31,6 +31,7 @@ int main() {
         {1, 0, 0, 0, 1, 1}
     };
     UnionFind3 uf3(n*n);
+    printTab(t_a, n);
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -49,15 +50,14 @@ int main() {
     }
 
     if (uf3.Find(0) == uf3.Find(n*n-1)) {
-        cout << "znaleziono!" << endl;
+        cout << "a znaleziono!" << endl;
     } else {
-        cout << "NIE znaleziono!" << endl;
+        cout << "a NIE znaleziono!" << endl;
     }
 
     uf3.Print();
     cout << endl;
 
-    printTab(t_a, n);
 
     // b)
     UnionFind3 uf3b(n*n + 2);

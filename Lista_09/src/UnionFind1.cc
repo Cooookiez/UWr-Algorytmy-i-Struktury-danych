@@ -4,10 +4,10 @@ using namespace std;
 class UnionFind1
 {
     public:
-    int n;
+    const int n;
     int *parent;
 
-    UnionFind1(int n0):n(n0),parent(new int[n0])
+    UnionFind1(int n0): n(n0), parent(new int[n0])
     {
         for(int i=0;i<n;i++)
             parent[i]=i;
@@ -29,9 +29,3 @@ class UnionFind1
         parent[Find(i)]=Find(j);
     }
 };
-
-
-int main()
-{
-    return 0;
-}
