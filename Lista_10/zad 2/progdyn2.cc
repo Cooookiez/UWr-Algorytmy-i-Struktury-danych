@@ -30,6 +30,19 @@ const int n=7; // mnożymy 7 macierzy: A0*A1*A2*A3*A4*A5*A6
 
 int w[n+1]={1,100,1,100,4,5,6,7}; // gdzie macierz Ai ma w[i] wierszy i w[i+1] kolumn
 
+// A0 1 x 100
+// A1 100 x 1
+// A2 1 x 100
+// A3 100 x 4
+// A4 4 x 5
+
+//?  i = 1, j = 4; k = 2
+
+// (A1 A2 )  (A3 A4)
+// w[i] * w[k+1] * w[j+1]
+
+
+
 // mnożąc macierze o wymiarach (a x b) oraz (b x c) 
 // otrzymujemy macierz o wymiarach (a x c)
 // koszt mnożenia = ilość mnożeń do wykonania = a*b*c 
@@ -73,6 +86,58 @@ double KosztMin(int a, int b) // minimalna ilość mnożeń potrzebna do oblicze
 	return K[a][b]=m;           // zapamiętaj wynik w tablicy K by nie obliczać go ponownie 
 }
 
+double KosztMinIteracja() {
+	double K[n][n] = {0};
+	// 1
+	for (int d = 1; d < n; d++){
+		for (int i = 0; i < n-d; i++) {
+			int j = i+d;
+			// K[i][j]
+			// cout << "("<<i<<","<<j<<")" << endl;
+
+
+			int myMin = INT_MAX;
+			int toMinTmp;
+			for (int k = i; k < j; k++) {
+				// 2 (3 4 5)
+				// (2 3) (4 5)
+				// (2 3 4) 5
+				// 2(34)
+				toMinTmp = K[i][k] + K[k+1][j] + (w[i] * w[k+1] * w[j+1]);
+				if (myMin > toMinTmp) {
+					myMin = toMinTmp;
+					Last[i][j] = k;
+				}
+			}
+			K[i][j] = myMin;
+			// cout << i << " " << j << " " << K[i][j] << endl;
+
+			// 0,1
+			// 1,2
+			// 2,3
+			// 3,4
+			// 4,5
+
+			// 0, 2
+			// 1, 3
+			// 2, 4
+			// 3, 5
+
+			// 0, 3
+			// 1, 4
+			// 2, 5
+
+			// 0, 4
+			// 1, 5
+
+			// 0, 5
+		}
+		// cout << endl;
+	}
+	// cout << "najmniej mnozen:\t" << K[0][n-1] << endl;
+	return K[0][n-1];
+}
+
 double KosztMax(int a, int b)  // obliczanie kosztu maksymalnego by zobaczyć po co to robimy
 {
 	static double K[n][n]={0}; 
@@ -113,23 +178,35 @@ void mnozenie(int a, int b)  // mnożenie Aa*...*Ab w kolejności zapisanej w ta
 
 int main()
 { 
-	cout<< "koszt optymalny dla A0*A1*A2 = "<<KosztMin(0,2)<<endl;
-	cout<<"kolejność "; mnozenie(0,2);	
+	// KosztMinIteracja();
+	// return 0;
+	// cout<< "koszt optymalny dla A0*A1*A2 = "<<KosztMin(0,2)<<endl;
+	// cout<<"kolejność "; mnozenie(0,2);	
 	
-	cout<<endl<<endl;	
+	// cout<<endl<<endl;	
 
-	cout<< "koszt maksymalny dla A0*A1*A2 = "<<KosztMax(0,2)<<endl;
-	cout<<"kolejność "; mnozenie(0,2);	
+	// cout<< "koszt maksymalny dla A0*A1*A2 = "<<KosztMax(0,2)<<endl;
+	// cout<<"kolejność "; mnozenie(0,2);	
 	
-	cout<<endl<<endl;		
+	// cout<<endl<<endl;		
+
+	// cout<<"koszt minimalny dla A0*A2*A3*A4*A5*A6 = "<<KosztMin(0,n-1)<<endl;
+    // cout<<"kolejność "; mnozenie(0,n-1);	
+
+	// cout<<endl<<endl;	
+
+	// cout<<"koszt maksymalny dla A0*A2*A3*A4*A5*A6 = "<<KosztMax(0,n-1)<<endl;
+    // cout<<"kolejność "; mnozenie(0,n-1);	
+	
+	// cout<<endl<<endl;	;		
 
 	cout<<"koszt minimalny dla A0*A2*A3*A4*A5*A6 = "<<KosztMin(0,n-1)<<endl;
     cout<<"kolejność "; mnozenie(0,n-1);	
 
-	cout<<endl<<endl;	
+	cout<<endl<<endl;		
 
-	cout<<"koszt maksymalny dla A0*A2*A3*A4*A5*A6 = "<<KosztMax(0,n-1)<<endl;
+	cout<<"koszt minimalny dla A0*A2*A3*A4*A5*A6 = "<<KosztMinIteracja()<<endl;
     cout<<"kolejność "; mnozenie(0,n-1);	
-	
+
 	cout<<endl<<endl;	
 }

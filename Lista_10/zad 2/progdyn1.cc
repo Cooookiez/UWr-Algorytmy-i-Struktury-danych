@@ -38,7 +38,6 @@ const int n = sizeof(A)/sizeof(A[0]); // ilość wierzchołków wielokąta
 
 int W[n][n]={0}; // W[a][b]=c takie, że trójkąt (a,b,c) należy do triangulacji optymalnej wielokąta A[a]..A[b]
 
-
 double BestLen(int a, int b)
 {
 	static double L[n][n]={0}; 
@@ -65,6 +64,55 @@ double BestLen(int a, int b)
 		}
 	}
 	return L[a][b]=m;        // zapamiętaj i zwróć optymalny wynik
+}
+
+double BestLenIter()
+{
+	int B[n][n] = {0};
+	
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            W[i][j] = 0;
+        }
+    }
+    double m=0;              // najlepszy dotychczasowy wynik
+	for(int d=1; d<n; d++) {
+		for(int a = 0; a < n - d; a++) {
+			int b = a + d;
+			if(b<a+3) {
+				B[a][b] = 0;
+				continue;
+			}
+			for(int c=a+1;c<b;c++)   // dla każdego wierzchołka c pomiędzy a i b
+			{	
+				
+				double    koszt = B[a][c] + B[c][b]; //  oblicz koszt triangulacji wielokątów a..c i c..b 
+				if(a+1<c) koszt += dist(A[a],A[c]); // dodaj długość (a,c) jeśli jest to przekątna
+				if(c+1<b) koszt += dist(A[c],A[b]); // dodaj długość (c,b) jeśli jest to przekątna
+
+				if(koszt<m || m==0)  // jeśli koszt mniejszy od dotychczasowego minimum (lub pierwszy obliczany)
+				{
+					m=koszt;         // aktualizuj minimum 
+					W[a][b]=c;       // zapamiętaj, z którym wierzchołkiem połączyć a i b
+				}
+			}
+			// return L[a][b]=m;        // zapamiętaj i zwróć optymalny wynik
+			B[a][b] = m;
+		}
+	}
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << B[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << W[i][j] << "\t";
+        }
+        cout << endl;
+    }
+	return B[0][n-1];
 }
 
 void kreski(int a, int b)
@@ -109,7 +157,12 @@ int main()
 		return 0;
 	}
 
-	cout<<"Całkowita długość siatki wewnętrznej = "<<BestLen(0,n-1)<<endl;
+	// cout<<"Całkowita długość siatki wewnętrznej = "<<BestLen(0, n-1)<<endl;
+    // cout<<"Należy połączyć słupki:"<<endl;
+	// kreski(0,n-1);	
+
+	
+	cout<<"Całkowita długość siatki wewnętrznej = "<<BestLenIter()<<endl;
     cout<<"Należy połączyć słupki:"<<endl;
 	kreski(0,n-1);	
 }
