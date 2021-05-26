@@ -5,11 +5,9 @@ using namespace std;
 
 const int n = 5;
 int ile[]={3, 5, 8, 4, 10}; // gdzie macierz Ai ma w[i] wierszy i w[i+1] kolumn
-int s[n+1] = {0, 3, 7, 15, 19, 20};
+int s[n + 1] = { 0 };
 
-// for(int i=1; i < n+1; i++) {
-//   s[i] = s[i-1] + ile[i];
-// }
+
 
 // s[4] - s[3] = 19 - 15 = 4 = ile[3]
 // s[4] - s[2] = 19 - 7 = 12 = 8 + 4 = ile[2] + ile[3]
@@ -37,20 +35,22 @@ double KosztMinIteracja() {
 
 			int myMin = INT_MAX;
 			int toMinTmp;
-            int suma = (s[j+1] - s[i]);
+            int suma = s[j+1] - s[i];  // Suma ile[i] + ile[i+1] + ... + ile[j] za pomoca sumy prefiksowej
 			for (int k = i+1; k < j; k++) {
-				toMinTmp = K[i][k-1] + K[k+1][j]; // lewy trujkat optymalny + prawy trujkat optymalne
+				toMinTmp = K[i][k-1] + K[k+1][j]; // lewy trojkat optymalny + prawy trojkat optymalne
 				if (myMin > toMinTmp) {
 					myMin = toMinTmp;
 					Last[i][j] = k;
 				}
 			}
+			// korzen w i (lewo poddrzewo puste)
             toMinTmp = K[i+1][j];
             if (myMin > toMinTmp) {
                 myMin = toMinTmp;
                 Last[i][j] = i;
             }
 
+			// korzen w j (prawe poddrzewo puste)
             toMinTmp = K[i][j-1];
             if (myMin > toMinTmp) {
                 myMin = toMinTmp;
@@ -85,5 +85,8 @@ void mnozenie(int a, int b)  // mnożenie Aa*...*Ab w kolejności zapisanej w ta
 
 int main()
 {
+	for(int i=1; i < n+1; i++) {
+		s[i] = s[i-1] + ile[i-1];
+	}
     KosztMinIteracja();
 }
