@@ -1,0 +1,95 @@
+# Zrobione juz zadania
+
+## Egzamin
+
+- [x] *wszystko?*
+
+## Listy
+
+- [x] Lista **1**, Zadania:
+  - [x] 3
+  - [x] 4
+  - [x] 6
+  - [x] 7
+- [x] Lista **2**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [ ] 3
+  - [x] 4
+  - [x] 5
+  - [x] 6
+  - [x] 9
+  - [ ] 11
+  - [x] 12
+  - [ ] 16 **X**
+- [ ] Lista **3**, Zadania:
+  - [X] 1
+  - [x] 2
+  - [x] 3
+  - [x] 4
+  - [ ] 5
+  - [ ] 6
+  - [ ] 7
+  - [x] 11
+  - [x] 12
+  - [x] 13
+- [x] Lista **4**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [ ] 4 https://www.csd.uwo.ca/~mmorenom/CS424/Ressources/master.pdf
+  - [x] 5
+- [x] Lista **5**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [x] 5
+  - [x] 6
+- [x] Lista **6**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [x] 5
+  - [x] 7 ale przypomniec sobie przed samym egzaminem
+- [x] Lista **7**, Zadania: **robie sam**
+  - [ ] 1
+  - [ ] 2
+  - [ ] 3
+  - [ ] 4
+  - [ ] 5
+  - [ ] 6
+  - [ ] 7
+  - [ ] 8
+- [x] Lista **8**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [x] 4
+  - [x] 5
+  - [x] 6
+  - [x] 7
+- [x] Lista **9**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+- [x] Lista **10**, Zadania:
+  - [ ] 1
+  - [x] 5
+  - [ ] 6
+- [x] Lista **11 (*Sprawdzian z grafów*)**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [x] 4
+  - [x] 5
+  - [x] 6
+  - [x] 7
+- [x] Lista **12**, Zadania:
+  - [ ] 1
+  - [ ] 6
+- [x] Lista **13**, Zadania:
+  - [x] 1
+  - [x] 2
+  - [x] 3
+  - [ ] 4
+  - [x] 5
